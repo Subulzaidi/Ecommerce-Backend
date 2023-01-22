@@ -29,12 +29,20 @@ public class User {
 
     private Date createdAt;
 
+    public User() {
+    }
+
     public User(String id, String firstName, String lastName, String image, String role, String email, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.image = image;
         this.role = role;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String email, String password){
         this.email = email;
         this.password = password;
     }
