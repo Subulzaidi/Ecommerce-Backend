@@ -25,7 +25,7 @@ public class UserController{
     @PostMapping("/signup")
     public ResponseEntity<?> signupUser(@RequestBody User user){
         if(userRepo.existsByEmail(user.getEmail())){
-            return new ResponseEntity<>("The user with the email "+ user.getEmail()+ "already exists ", HttpStatus.FORBIDDEN);
+                return new ResponseEntity<>("The user with the email "+ user.getEmail()+ "already exists ", HttpStatus.FORBIDDEN);
         }else{
             user.setCreatedAt(new Date());
             user.setId(Integer.toString((int) (Math.random()*10000)));
