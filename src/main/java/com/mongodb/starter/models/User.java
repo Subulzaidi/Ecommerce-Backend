@@ -29,7 +29,7 @@ public class User {
 
     private Date createdAt;
 
-    public User() {
+    public User(String firstname, String lastname, String email, String encryptedpassword) {
     }
 
     public User(String id, String firstName, String lastName, String image, String role, String email, String password) {

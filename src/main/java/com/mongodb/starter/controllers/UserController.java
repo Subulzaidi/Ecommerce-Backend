@@ -1,19 +1,15 @@
 package com.mongodb.starter.controllers;
 
-import com.mongodb.starter.models.User;
+import com.mongodb.starter.dto.User.Signindto;
+import com.mongodb.starter.dto.User.Signupdto;
+import com.mongodb.starter.dto.response.SignInResponsedto;
+import com.mongodb.starter.dto.response.SignupResponsedto;
 import com.mongodb.starter.repositories.UserRepository;
+import com.mongodb.starter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
-import java.util.Optional;
 
 
 @RestController
@@ -22,7 +18,7 @@ public class UserController{
     @Autowired
     private UserRepository userRepo;
 
-    @PostMapping("/signup")
+   /* @PostMapping("/signup")
     public ResponseEntity<?> signupUser(@RequestBody User user){
         if(userRepo.existsByEmail(user.getEmail())){
                 return new ResponseEntity<>("The user with the email "+ user.getEmail()+ "already exists ", HttpStatus.FORBIDDEN);
@@ -32,9 +28,10 @@ public class UserController{
             userRepo.save(user);
             return new ResponseEntity<User>(user, HttpStatus.OK);
         }
+
     }
 
-    @PostMapping("/signin")
+  @PostMapping("/signin")
     public ResponseEntity<?> loginUser(@RequestBody User user) {
 
         if (!userRepo.existsByEmail(user.getEmail())) {
@@ -49,6 +46,24 @@ public class UserController{
          else{
            return new ResponseEntity<User>(user, HttpStatus.OK);
        }
-}
+}*/
+    @Autowired
+    UserService userService;
+   @PostMapping("/signup")
+
+   public SignupResponsedto signup (@RequestBody Signupdto signup){
+       return userService.signup(signup);
+   }
+
+    @PostMapping("/signin")
+    public SignInResponsedto signIn(@RequestBody Signindto signindto){
+
+        return userService.signin(signindto);
+    }
+
+
+
+
+
 }
 

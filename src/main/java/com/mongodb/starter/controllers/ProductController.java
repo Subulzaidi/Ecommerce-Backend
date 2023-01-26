@@ -4,6 +4,7 @@ import com.mongodb.starter.common.ApiResponse;
 import com.mongodb.starter.dto.ProductDto;
 import com.mongodb.starter.models.Category;
 import com.mongodb.starter.models.Product;
+import com.mongodb.starter.models.User;
 import com.mongodb.starter.repositories.CategoryRepo;
 import com.mongodb.starter.service.ProductService;
 
@@ -50,8 +51,7 @@ public ResponseEntity<ApiResponse> createProduct(@RequestBody ProductDto product
     }
 
 
-    @DeleteMapping("/delete/{ProductId}")
-    public ResponseEntity<ApiResponse> deleteProduct(@PathVariable("ProductId") Integer ProductId, @RequestParam("ProductId") Product product) throws ConfigDataNotFoundException{
+    /* @DeleteMapping("/delete/{ProductId}") */
 
 
 
@@ -61,5 +61,5 @@ public ResponseEntity<ApiResponse> createProduct(@RequestBody ProductDto product
 
 
 
-}
+
 
